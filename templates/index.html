@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ app_name }} - Intelligent Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="logo">G</span><span>{{ app_name }}</span></div>
+
+    <button class="btn-new" id="newChat">+ New Chat</button>
+
+    <input class="search" id="search" type="search" placeholder="Search recent chats..." autocomplete="off" />
+
+    <div class="side-head">
+      <span>RECENT CHATS</span>
+      <button class="icon-btn" id="clearAll" title="Delete all chats">&#128465;</button>
+    </div>
+    <ul class="chat-list" id="chatList"></ul>
+
+    <div class="side-foot">
+      <span class="avatar">M</span><span class="uname">{{ app_name }} User</span>
+      <button class="icon-btn" id="theme" title="Toggle dark mode">&#9680;</button>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn menu" id="menu">&#9776;</button>
+      <h1 id="title">New Chat</h1>
+      <span class="badge" id="badge"><i class="dot"></i><span id="badgeText">checking...</span></span>
+    </header>
+
+    <section class="stage" id="stage">
+      <div class="welcome" id="welcome">
+        <div class="hero-icon">&#10022;</div>
+        <h2>Where curiosity meets intelligence</h2>
+        <p>Ask {{ app_name }} anything &mdash; brainstorm ideas, write code, analyze data, or summarize text.</p>
+        <div class="cards">
+          <button class="card" data-p="Write a clean Express.js route handler for user authentication">
+            <b>Code Generation</b><small>Write a clean Express.js route handler for user auth</small></button>
+          <button class="card" data-p="Explain quantum computing concepts in simple terms">
+            <b>Deep Explanation</b><small>Explain quantum computing concepts in simple terms</small></button>
+          <button class="card" data-p="Draft a professional project proposal email to a client">
+            <b>Professional Writing</b><small>Draft a professional project proposal email to a client</small></button>
+          <button class="card" data-p="Give me 5 creative ideas for a web application project">
+            <b>Brainstorming</b><small>Give me 5 creative ideas for a web application project</small></button>
+        </div>
+      </div>
+      <div class="messages" id="messages"></div>
+    </section>
+
+    <footer class="composer-wrap">
+      <div class="composer">
+        <textarea id="input" rows="1" placeholder="Type a message to {{ app_name }}..." maxlength="4000"></textarea>
+        <button id="send" class="send" title="Send">&#10148;</button>
+      </div>
+      <p class="note">{{ app_name }} can make mistakes. Verify important info.</p>
+    </footer>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
